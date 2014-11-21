@@ -19,11 +19,7 @@ public class ProbarUsuariosDirecciones {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    SessionFactory factory=    HIbernateUtilidades.getSessionFactory();
-     Session sesion=              factory.openSession();
-     Transaction tranza=    sesion.beginTransaction();
-        
-        
+
         
         
         
@@ -46,10 +42,11 @@ public class ProbarUsuariosDirecciones {
         u.setNombre("Juan carlitos3");
         u.setSueldo(40002f);
         
-        sesion.save(u);
-        sesion.save(d);
-        tranza.commit();
-        sesion.close();
+       DAOUsuarioImpl du=new DAOUsuarioImpl();
+                      du.agregarUsuario(u);
+       DAODireccionImpl di=new DAODireccionImpl();     
+                        di.agregarDireccion(d);
+     
         System.out.println("todo se guardo bien!!");
         
        
