@@ -10,14 +10,16 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 
 /**
  *
@@ -40,28 +42,12 @@ public class Usuario implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "SUELDO")
     private Float sueldo;
-    @OneToOne(mappedBy = "idUsuario")
-    private Direccion direccion;
-
-    public Direccion getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(Direccion direccion) {
-        this.direccion = direccion;
-    }
+    @OneToMany(mappedBy = "idUsuario")
+   @JsonIgnore
+    private List<Direccion> direccionList;
 
     public Usuario() {
     }
-
-    public Usuario(String nombre, Integer edad, Float sueldo, Direccion direccion) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.sueldo = sueldo;
-        this.direccion = direccion;
-    }
-
- 
 
     public Usuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
@@ -99,7 +85,13 @@ public class Usuario implements Serializable {
         this.sueldo = sueldo;
     }
 
-    
+    public List<Direccion> getDireccionList() {
+        return direccionList;
+    }
+
+    public void setDireccionList(List<Direccion> direccionList) {
+        this.direccionList = direccionList;
+    }
 
     @Override
     public int hashCode() {
