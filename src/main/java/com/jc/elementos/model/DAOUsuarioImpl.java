@@ -25,7 +25,7 @@ public class DAOUsuarioImpl {
   Transaction tranza= sesion.beginTransaction();
  
 Criteria cri=sesion.createCriteria(Usuario.class);
-ArrayList<Usuario> usuarios= (ArrayList<Usuario>)cri.list();
+ArrayList<Usuario> usuarios= (ArrayList<Usuario>)cri.list();System.outprintln(usuarios.get(0).getDireccionList().get(0).getEstado());
 
 ObjectMapper mapper=new ObjectMapper();
 
