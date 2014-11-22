@@ -5,42 +5,22 @@
  */
 package com.jc.elementos.controller;
 
-
 import com.jc.elementos.model.DAOUsuarioImpl;
-import com.jc.elementos.model.Direccion;
-import com.jc.elementos.model.ProbarUsuariosDirecciones;
-import com.jc.elementos.model.Usuario;
-import java.util.List;
-
-
-import org.codehaus.jackson.map.ObjectMapper;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- *
- * @author campitos
- */
-
 @Controller
-
 @RequestMapping("/")
-public class ControladorHola {
-
+public class ControladorUsuario {
     
+    @RequestMapping(value="/user", method=RequestMethod.GET, headers={"Accept=Application/json"})
+    public @ResponseBody String hola2()throws Exception{
+    DAOUsuarioImpl d=new DAOUsuarioImpl();
     
-    @RequestMapping(value="/hola", method=RequestMethod.GET, headers={"Accept=text/html"})
-    public @ResponseBody String hola(){
-    
-        return "Hola desde mi primer controller malo";
+   String hola= d.obtenerTodos();
+        return hola;
     }
-    
-    
-    
-   
     
 }

@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.context.annotation.Configuration;
 
 public class DAO {
     

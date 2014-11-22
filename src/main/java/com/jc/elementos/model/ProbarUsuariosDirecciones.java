@@ -20,57 +20,10 @@ import org.hibernate.criterion.CriteriaQuery;
  */
 public class ProbarUsuariosDirecciones {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args)throws Exception {
-
-        
-       
-       
-        
-        
-        /*
-        
-        Usuario u=new Usuario();
-        Direccion d=new Direccion();
-        
-        d.setCalle("calle de la amaregura");
-        d.setColonia("Colonia de avon3");
-        d.setCp(55130);
-        d.setEstado("Ebriedad3");
-        //Importante ligar al usuario anterior esta direccion
-        d.setIdUsuario(u);
-        ArrayList<Direccion> direcciones=new ArrayList<Direccion>();
-        u.setDireccionList(direcciones);
-        u.setEdad(43);
-        u.setNombre("Juan carlitos3");
-        u.setSueldo(40002f);
-        
-       DAOUsuarioImpl du=new DAOUsuarioImpl();
-                      du.agregarUsuario(u);
-       DAODireccionImpl di=new DAODireccionImpl();     
-                        di.agregarDireccion(d);
-               
-        */
-       SessionFactory factory= HIbernateUtilidades.getSessionFactory();
-   Session sesion=    factory.openSession();
-  Transaction tranza= sesion.beginTransaction();
- 
-Criteria cri=sesion.createCriteria(Usuario.class);
-ArrayList<Direccion> usuarios= (ArrayList<Direccion>)cri.list();
-
-ObjectMapper mapper=new ObjectMapper();
-
-
-System.out.println(mapper.writeValueAsString(usuarios));
-  
-  tranza.commit();
-  sesion.close();
-     
-        System.out.println("todo se guardo bien!!");
-        
-       
+    
+    public static void main(String args[])throws Exception{
+        DAOUsuarioImpl du=new DAOUsuarioImpl();
+       System.out.println(du.obtenerTodos());
     }
     
 }
